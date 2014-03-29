@@ -1,0 +1,9 @@
+Package: com.jw97.lifxeffects
+Name: LIFXEffects
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: Adds various cool lighting effects to the LIFX App
+Maintainer: Jack Willis
+Author: Jack Willis
+Section: Tweaks
