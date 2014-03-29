@@ -75,7 +75,11 @@
 @interface LFRandomColourLightingEffect : LFXLightingEffect
 @end
 
+#define TOTAL_LOOP_TIME 100
 #define TIMER_INTERVAL 0.1
+
+#define FADE_SATURATION 1.0f
+#define FADE_BRIGHTNESS 0.6f
 
 static NSTimer *fadeTimer = nil;
 static CGFloat oldHue = 0.65f;
@@ -114,12 +118,12 @@ static CGFloat oldHue = 0.65f;
 {
 	NSArray *lights = [self lights];
 
-	CGFloat hue = oldHue + 0.001f;
+	CGFloat hue = oldHue + (TIMER_INTERVAL / TOTAL_LOOP_TIME);
 	if (hue > 1.0f) hue = 0.0f;
 	oldHue = hue;
 
-	CGFloat saturation = 1.0f;
-	CGFloat brightness = 0.6f;
+	CGFloat saturation = FADE_SATURATION;
+	CGFloat brightness = FADE_BRIGHTNESS;
 	unsigned short kelvin = 3500;
 	LFXHSBKColor *color = [objc_getClass("LFXHSBKColor") colorWithHue:hue saturation:saturation brightness:brightness kelvin:kelvin];
 
@@ -136,6 +140,9 @@ static CGFloat oldHue = 0.65f;
 
 #define RANDOM_RAMP_ON_PERIOD 0.2f
 #define RANDOM_RAMP_OFF_PERIOD 0.3f
+
+#define RANDOM_SATURATION 1.0f
+#define RANDOM_BRIGHTNESS 0.6f
 
 #define MIN_COLOUR_SHIFT 40.0f
 
@@ -198,8 +205,8 @@ static CGFloat randomOldHue = 0.0f;
     randomOldHue = hue;
 	
 
-	CGFloat saturation = 1.0f;
-	CGFloat brightness = 0.6f;
+	CGFloat saturation = RANDOM_SATURATION;
+	CGFloat brightness = RANDOM_BRIGHTNESS;
 	unsigned short kelvin = 3500;
 	LFXHSBKColor *color = [objc_getClass("LFXHSBKColor") colorWithHue:hue saturation:saturation brightness:brightness kelvin:kelvin];
 
